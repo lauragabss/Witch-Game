@@ -23,7 +23,6 @@ int RandomNumInRange(int min, int max)
 
 void Game::AddPawn(Pawn* pawn)
 {
-	printf("\n+++++++++++++++++++++HERE+++++++++++++++++++++++\n");
 	int pawnsAmount = gamePawns.size();
 	bool assigned = false;
 	pawn->gameRef = this;
@@ -32,22 +31,21 @@ void Game::AddPawn(Pawn* pawn)
 	{
 		if(!gamePawns[i]->isActive)
 		{
-			printf("\nSubstitute!\n");
 			//delete gamePawns[i];
 			gamePawns[i] = pawn;
 			pawn->index = i;
 			assigned = true;
+			break;
 		}
 	}
 
 	if (assigned == false)
 	{
-		printf("\nAdd new one!\n");
 		gamePawns.push_back(pawn);
-		printf("-here-");
-		pawn->index = pawnsAmount + 1;
-		printf("fyeah");
+		pawn->index = pawnsAmount;
 	}
+
+	pawn->BeginPlay();
 }
 
 void Game::RemovePawn(int index)
