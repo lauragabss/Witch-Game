@@ -1,0 +1,11 @@
+﻿  actorFunctions.cpp
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(368,27): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(405,20): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(405,14): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(455,22): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(455,16): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(519,45): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(519,34): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(519,27): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+D:\_PROJECTS\Witch-Game\Game files\actorFunctions.cpp(519,20): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+  Profile.vcxproj -> D:\_PROJECTS\Witch-Game\Game files\x64\Debug\Profile.exe

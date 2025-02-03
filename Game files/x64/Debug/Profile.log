@@ -1,0 +1,29 @@
+﻿  actorFunctions.cpp
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(368,27): warning C4244: '=': conversão de 'double' para 'float', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(405,20): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(405,14): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(455,22): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(455,16): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(519,45): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(519,34): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(519,27): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\actorFunctions.cpp(519,20): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+  AnimationFunctions.cpp
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\AnimationFunctions.cpp(38,27): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\AnimationFunctions.cpp(39,36): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\AnimationFunctions.cpp(42,31): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+  animationGame.cpp
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\generalFunctions.cpp(15,55): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\generalFunctions.cpp(15,49): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\generalFunctions.cpp(27,18): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\generalFunctions.cpp(61,18): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\generalFunctions.cpp(70,18): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\generalFunctions.cpp(90,18): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\animationGame.cpp(28,38): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\animationGame.cpp(29,38): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+  PlayerFunctions.cpp
+C:\Users\55359\Downloads\witchGame2\witchGame\Profile\PlayerFunctions.cpp(21,12): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
+  UserData.cpp
+  Gerando Código...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflita com uso de outras bibliotecas; use /NODEFAULTLIB:library
+  Profile.vcxproj -> C:\Users\55359\Downloads\witchGame2\witchGame\Profile\x64\Debug\Profile.exe
