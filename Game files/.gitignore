@@ -1,0 +1,51 @@
+# Ignore compiled object files, libraries, and executables
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.exe
+*.out
+
+# Ignore Raylib-specific build directories
+build/
+bin/
+x64/
+Profile/
+Debug/
+Release/
+
+# Ignore Visual Studio-specific files
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.ide
+
+# Ignore system-specific files
+Thumbs.db
+ehthumbs.db
+.DS_Store
+
+# Ignore CMake build files if you use CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# Ignore IDE-specific files (e.g. Code::Blocks, CLion, etc.)
+*.cbp
+*.pro
+.idea/
+
+# Ignore log and temporary files
+*.log
+*.tmp
+*.bak
+
+# Ignore Raylib config files if you're using Raylib's own system
+raylib_config.h
+
+# Ignore any other editor-specific backup or temporary files
+*~
