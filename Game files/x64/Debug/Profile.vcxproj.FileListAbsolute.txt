@@ -1,8 +1,0 @@
-C:\Users\laura.silveira\source\repos\Profile\x64\Debug\Profile.exe
-C:\Users\55359\source\repos\Profile\Profile\x64\Debug\Profile.exe
-C:\Users\laura.silveira\Downloads\CPP09 - Laura\Profile\Profile\x64\Debug\Profile.exe
-C:\Users\55359\Desktop\FullCycle\CPP11\CPP10 - Laura\Profile\Profile\x64\Debug\Profile.exe
-C:\Users\55359\Desktop\FullCycle\CPP11\witchGame\Profile\Profile\x64\Debug\Profile.exe
-C:\Users\55359\Desktop\FullCycle\CPP11\witchGame\Profile\x64\Debug\Profile.exe
-C:\Users\laura.silveira\Downloads\CPP11\CPP11\witchGame\Profile\x64\Debug\Profile.exe
-C:\Users\55359\Downloads\witchGame2\witchGame\Profile\x64\Debug\Profile.exe
