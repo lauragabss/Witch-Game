@@ -1,7 +1,7 @@
 //general functions
 #include <cstdio>
 #include <iostream>
-#include "header.h"
+#include "Headers/header.h"
 
 using namespace std;
 

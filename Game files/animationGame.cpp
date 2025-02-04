@@ -1,5 +1,5 @@
-#include "header.h"
-#include "animationHeader.h"
+#include "Headers/header.h"
+#include "Headers/animationHeader.h"
 #include <iostream>
 #include "generalFunctions.cpp"
 

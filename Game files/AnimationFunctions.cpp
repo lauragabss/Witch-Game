@@ -1,6 +1,6 @@
 //animation functions
-#include "header.h"
-#include "animationHeader.h"
+#include "Headers/header.h"
+#include "Headers/animationHeader.h"
 #include <cstdio>
 
 
