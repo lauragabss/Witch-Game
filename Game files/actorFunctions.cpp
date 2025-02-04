@@ -3,18 +3,36 @@
 #include "header.h"
 
 
-void CalculateCountdown(hability* hab)
+void CalculateCountdown(ability* hab)
 {
 	if (!hab->canUse)
 	{
 		hab->currentCooldownTime -= GetFrameTime();
 
-		if (hab->currentCooldownTime <= 0.0f)
+		if (hab->currentCooldownTime <= 0.0f)    
 		{
 			hab->currentCooldownTime = hab->skillCooldown;
 			hab->canUse = true;
 		}
 	}
+}
+
+bool ActivateAbility(ability* hab)
+{
+	if(hab->canUse)
+	{
+		if (*hab->manaPool >= hab->abilityCost)
+		{
+			printf("\n Before mana pool value: %d \n", *hab->manaPool);
+			hab->canUse = false;
+			*hab->manaPool = *hab->manaPool - hab->abilityCost;
+			printf("\n Current mana pool value: %d \n", *hab->manaPool);
+			return true;
+		}
+		return false;
+	}
+
+	return false;
 }
 
 //--------------Constructors-------------
@@ -32,7 +50,10 @@ Enemy::Enemy(Vector2 position, Player* playerRef)
 
 Pawn::Pawn() {}
 
-Player::Player() {}
+Player::Player() 
+{
+	spawnCatAbility.manaPool = &mana;
+}
 
 Game::Game() {}
 //--------------Collision----------------
@@ -53,6 +74,12 @@ void Enemy::CollisionEvent(Pawn* target)
 
 void Player::CollisionEvent(Pawn* target)
 {
+	if (!target || target==nullptr)
+	{
+		printf("\n Invalid target for collision \n");
+		return;
+	}
+
 	if (target->GetClassTag() == enemy)
 	{
 		ReceiveDamage(5);
@@ -192,7 +219,11 @@ void Enemy::CollideWithPlayer(Pawn* player)
 void Ally::CollideWithPlayer(Pawn* player) 
 {
 	//isRunningFromPlayer = true;
-	//dynamic_cast<Player*>(player)->ReceiveBlessing();
+	Player* player_ = dynamic_cast<Player*>(player);
+	if(player_ && player_ != nullptr)
+	{
+		player_->ReceiveBlessing();
+	}
 }
 
 //--------------Movement------------------
@@ -331,7 +362,19 @@ void Pawn::ReceiveBlessing()
 {
 	if (animation.imagesizeMultiplier < animation.maxImageSizeMultiplier) 
 	{ 
+		// Growth blessing
 		//animation.imagesizeMultiplier = animation.imagesizeMultiplier * 2;
+
+		// Life blessing
+		int tempLife = life + 5;
+		if (tempLife > maxLife)
+		{
+			life = maxLife;
+		}
+		else
+		{
+			life = tempLife;
+		}
 	}
 }
 
@@ -529,7 +572,7 @@ void Player::Tick()
 	Pawn::Tick();
 	
 	//Player Tick
-	CalculateCountdown(&spawnCatHability);
+	CalculateCountdown(&spawnCatAbility);
 
 }
 

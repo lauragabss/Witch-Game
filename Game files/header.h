@@ -11,11 +11,13 @@ using namespace std;
 
 enum classTag { pawn = 1, player = 2, NPC = 3, ally= 4, enemy= 5};
 
-struct hability 
+struct ability 
 {
-	float skillCooldown = 1;
-	float currentCooldownTime = 1;
+	float skillCooldown = 3;
+	float currentCooldownTime = 3;
 	bool canUse = true;
+	int abilityCost = 6;
+	int* manaPool = nullptr;
 };
 
 struct ScreenSize
@@ -24,6 +26,7 @@ struct ScreenSize
 	int height = 800;
 };
 
+bool ActivateAbility(ability* hab);
 
 class Game;
 
@@ -92,7 +95,7 @@ class Player : public Pawn
 public:
 	Player();
 	classTag clTag = player;
-	int mana = 1;
+	int mana = 10;
 	int maxMana = 10;
 	int magicCost = 6;
 	void Inputs();
@@ -105,7 +108,7 @@ public:
 
 private:
 	void SpawnCat();
-	hability spawnCatHability;
+	ability spawnCatAbility;
 };
 
 //NPCs are non playable characters

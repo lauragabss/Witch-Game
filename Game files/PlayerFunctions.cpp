@@ -5,7 +5,7 @@
 
 void Player::SpawnCat()
 {
-	if (spawnCatHability.canUse)
+	if (ActivateAbility(&spawnCatAbility))
 	{
 		//create ally definition
 		Ally ally;
