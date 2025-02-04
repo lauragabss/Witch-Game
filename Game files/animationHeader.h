@@ -19,8 +19,8 @@ struct sheetInfo
 
 struct Spritesheets
 {
-	sheetInfo idle = { LoadTexture("B_witch_idle.png"), 6 };
-	sheetInfo walk = { LoadTexture("B_witch_run.png"), 8 };
+	sheetInfo idle = { LoadTexture("Assets/B_witch_idle.png"), 6 };
+	sheetInfo walk = { LoadTexture("Assets/B_witch_run.png"), 8 };
 };
 
 enum AnimationState {idle, walk};
@@ -47,7 +47,7 @@ class Animation
 		coordinates imageSize;
 		Spritesheets animations;
 		int currentFrame = 0;
-		Texture2D spritesheet = LoadTexture("B_witch_idle.png");
+		Texture2D spritesheet = LoadTexture("Assets/B_witch_idle.png");
 		float timer = 0.0;
 		Rectangle animRec{ 0.0,0.0,100.0,100.0 };
 };

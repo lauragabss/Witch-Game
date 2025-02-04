@@ -530,16 +530,16 @@ void Player::BeginPlay()
 
 void Enemy::BeginPlay() 
 {
-	animation.SetAnimationSources(idle, LoadTexture("ChikBoy_idle.png"), 6);
-	animation.SetAnimationSources(walk, LoadTexture("ChikBoy_run.png"), 10);
+	animation.SetAnimationSources(idle, LoadTexture("Assets/ChikBoy_idle.png"), 6);
+	animation.SetAnimationSources(walk, LoadTexture("Assets/ChikBoy_run.png"), 10);
 	Movement initMov = { movement.position, {0,0}, 1 };
 	SetMovement(initMov);
 }
 
 void Ally::BeginPlay() 
 {
-	animation.SetAnimationSources(idle, LoadTexture("MeowKnight/MeowKnight/Meow-Knight_Idle.png"), 6);
-	animation.SetAnimationSources(walk, LoadTexture("MeowKnight/MeowKnight/Meow-Knight_Run.png"), 10);
+	animation.SetAnimationSources(idle, LoadTexture("Assets/MeowKnight/Meow-Knight_Idle.png"), 6);
+	animation.SetAnimationSources(walk, LoadTexture("Assets/MeowKnight/Meow-Knight_Run.png"), 10);
 	Movement initMov = { movement.position, {0,0}, 2 };
 	SetMovement(initMov);
 	clTag = ally;
