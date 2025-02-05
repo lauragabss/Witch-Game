@@ -22,7 +22,7 @@ Texture2D Animation::CalculateFrame()
 		currentSheet = animations.walk;
 	}
 	spritesheet = currentSheet.texture;
-	
+
 	//Calculate frame time
 	timer += GetFrameTime();
 
@@ -39,7 +39,7 @@ Texture2D Animation::CalculateFrame()
 	spriteHeight = spritesheet.height / currentSheet.frameAmount;
 
 	//calculate position of current sprite
-	imagePosition.x = spritesheet.width;
+	imagePosition.x = 0;
 	imagePosition.y = spriteHeight * currentFrame;
 	imageSize.x = spriteWidth;
 	imageSize.y = spriteHeight;
@@ -49,7 +49,7 @@ Texture2D Animation::CalculateFrame()
 	animRec.y = imagePosition.y;
 	animRec.width = imageSize.x;
 	animRec.height = imageSize.y;
-
+	
 	return currentSheet.texture;
 	
 }
@@ -72,6 +72,9 @@ void Animation::ShowAnimation(Movement movement)
 {
 	Rectangle drawnRect = animRec;
 	drawnRect.width = drawnRect.width * facing;
+
+	//DrawRectangle(movement.position.x, movement.position.y, imageSize.x * imagesizeMultiplier, imageSize.y * imagesizeMultiplier, RED);
+	//DrawTextureRec(animations.idle.texture, drawnRect, { movement.position.x, movement.position.y }, WHITE);
 
 	DrawTexturePro(
 		CalculateFrame(),
