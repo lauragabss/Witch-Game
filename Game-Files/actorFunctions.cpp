@@ -1,5 +1,4 @@
 //actor functions
-#pragma once
 #include "Headers/header.h"
 
 

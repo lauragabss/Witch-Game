@@ -180,6 +180,7 @@
     <ClCompile Include="actorFunctions.cpp" />
     <ClCompile Include="AnimationFunctions.cpp" />
     <ClCompile Include="animationGame.cpp" />
+    <ClCompile Include="generalFunctions.cpp" />
     <ClCompile Include="PlayerFunctions.cpp" />
     <ClCompile Include="UserData.cpp" />
   </ItemGroup>
@@ -189,6 +190,11 @@
   <ItemGroup>
     <ClInclude Include="animationHeader.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="Headers\ActorHeader.h" />
+    <ClInclude Include="Headers\animationHeader.h" />
+    <ClInclude Include="Headers\generalFunctions.h" />
+    <ClInclude Include="Headers\header.h" />
+    <ClInclude Include="Headers\movementHeader.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="B_witch_idle.png" />

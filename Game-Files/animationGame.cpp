@@ -1,7 +1,7 @@
 #include "Headers/header.h"
 #include "Headers/animationHeader.h"
 #include <iostream>
-#include "generalFunctions.cpp"
+#include "Headers/generalFunctions.h"
 
 float playerPos[2] = {500,500};
 
@@ -59,7 +59,6 @@ int main()
 		DrawText(TextFormat("Mana %i / %i", playerActor.mana, playerActor.maxMana), 10, 30, 20, BLUE);
 		DrawText(TextFormat("SCORE %i", gameRef.score), 10, 0, 20, WHITE);
 		DrawText(TextFormat("LIFE %i / %i", playerActor.life, playerActor.maxLife), 10, 60, 20, RED);
-
 
 		//end
 		EndDrawing();

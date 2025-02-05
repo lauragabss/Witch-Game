@@ -1,6 +1,4 @@
-//general functions
-#include <cstdio>
-#include <iostream>
+#include "Headers/generalFunctions.h"
 #include "Headers/header.h"
 
 using namespace std;
@@ -8,7 +6,6 @@ using namespace std;
 //vector<Pawn*> gamePawns;
 //int score = 0;
 
-Game gameRef;
 
 void DrawLife(int life, int maxLife, float posX, float posY, int size)
 {
