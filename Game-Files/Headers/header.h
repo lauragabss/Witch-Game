@@ -50,6 +50,7 @@ class Pawn : public Actor
 public:
 	Pawn(Vector2 position);
 	Pawn();
+	~Pawn();
 	Animation animation;
 	Rectangle rec = { 0, 0, 1, 1 };
 	float collisionThreshold = 1.0;
@@ -122,7 +123,7 @@ public:
 
 protected:
 	float GetTargetDistance(Pawn* target);
-	void MoveToPawn(Pawn* target);
+	bool MoveToPawn(Pawn* target);
 	void RunFromPawn(Pawn* target);
 	Player* playerRef = nullptr;
 };

@@ -22,10 +22,8 @@ bool ActivateAbility(ability* hab)
 	{
 		if (*hab->manaPool >= hab->abilityCost)
 		{
-			printf("\n Before mana pool value: %d \n", *hab->manaPool);
 			hab->canUse = false;
 			*hab->manaPool = *hab->manaPool - hab->abilityCost;
-			printf("\n Current mana pool value: %d \n", *hab->manaPool);
 			return true;
 		}
 		return false;
@@ -49,9 +47,18 @@ Enemy::Enemy(Vector2 position, Player* playerRef)
 
 Pawn::Pawn() {}
 
+Pawn::~Pawn()
+{
+	// Pawn destructor
+	printf("\nDESTROY PAWN\n");
+}
+
 Player::Player() 
 {
 	spawnCatAbility.manaPool = &mana;
+
+	maxLife = 3;
+	life = maxLife;
 }
 
 Game::Game() {}
@@ -75,13 +82,12 @@ void Player::CollisionEvent(Pawn* target)
 {
 	if (!target || target==nullptr)
 	{
-		printf("\n Invalid target for collision \n");
 		return;
 	}
 
 	if (target->GetClassTag() == enemy)
 	{
-		ReceiveDamage(5);
+		ReceiveDamage(1);
 	}
 }
 
@@ -413,8 +419,13 @@ float NPCs::GetTargetDistance(Pawn* target)
 }
 
 
-void NPCs::MoveToPawn(Pawn* target)
+bool NPCs::MoveToPawn(Pawn* target)
 {
+	if (target == nullptr || !target->isActive)
+	{
+		return false;
+	}
+
 	int velX, velY;
 	//X axis
 	if (target->GetMovement().position.x > movement.position.x)
@@ -444,7 +455,14 @@ void NPCs::MoveToPawn(Pawn* target)
 		velY = 0;
 	}
 
+	if (velX == 0 && velY == 0)
+	{
+		return false;
+	}
+
 	AddVelocity(velX, velY);
+
+	return true;
 }
 
 
@@ -498,8 +516,14 @@ void Ally::UpdateMovement()
 		}
 		else if (distance > 200)
 		{
-			animation.playerState = walk;
-			MoveToPawn(playerRef);
+			if (MoveToPawn(playerRef))
+			{
+				animation.playerState = walk;
+			}
+			else
+			{
+				animation.playerState = idle;
+			}
 		}
 		else
 		{
@@ -589,8 +613,14 @@ void Enemy::Tick()
 	NPCs::Tick();
 	if (GetTargetDistance(playerRef) < 500) 
 	{
-		MoveToPawn(playerRef);
-		animation.playerState = walk;
+		if (MoveToPawn(playerRef))
+		{
+			animation.playerState = walk;
+		}
+		else
+		{
+			animation.playerState = idle;
+		}
 	}
 	else 
 	{

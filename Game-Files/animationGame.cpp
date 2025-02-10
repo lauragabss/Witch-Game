@@ -15,8 +15,8 @@ int main()
 	SetTargetFPS(60);
 	const int amountOfEnemies = 5;
 
-	Player playerActor;
-	gameRef.AddPawn(&playerActor);
+	Player* playerActor = new Player();
+	gameRef.AddPawn(playerActor);
 
 	Enemy* tempEnemies[amountOfEnemies];
 	//Starter enemies
@@ -26,17 +26,10 @@ int main()
 		Vector2 randomLocation;
 		randomLocation.x = RandomNumInRange(20, gameRef.screenSize.width - 20);
 		randomLocation.y = RandomNumInRange(20, gameRef.screenSize.height - 20);
-		tempEnemies[i] = new Enemy(randomLocation, &playerActor);
+		tempEnemies[i] = new Enemy(randomLocation, playerActor);
 
 		gameRef.AddPawn(tempEnemies[i]);
 	}
-
-
-	//Starter ally
-	Ally tempAlly;
-	tempAlly.GetMovement().position = Vector2{300, 300};
-	tempAlly.AssignPlayer(&playerActor);
-	gameRef.AddPawn(&tempAlly);
 
 	//Begin play
 	gameRef.BeginPlay();
@@ -49,16 +42,17 @@ int main()
 		//Background color
 		ClearBackground(PURPLE);
 
-		//Collisions
-		gameRef.Collisions();
 
 		//Tick
 		gameRef.Tick();
 
+		//Collisions
+		gameRef.Collisions();
+
 		//Draw UI
-		DrawText(TextFormat("Mana %i / %i", playerActor.mana, playerActor.maxMana), 10, 30, 20, BLUE);
+		DrawText(TextFormat("Mana %i / %i", playerActor->mana, playerActor->maxMana), 10, 30, 20, BLUE);
 		DrawText(TextFormat("SCORE %i", gameRef.score), 10, 0, 20, WHITE);
-		DrawText(TextFormat("LIFE %i / %i", playerActor.life, playerActor.maxLife), 10, 60, 20, RED);
+		DrawText(TextFormat("LIFE %i / %i", playerActor->life, playerActor->maxLife), 10, 60, 20, RED);
 
 		//end
 		EndDrawing();
