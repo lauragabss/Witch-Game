@@ -134,8 +134,8 @@ class Enemy : public NPCs
 public:
 	Enemy(Vector2 position, Player* playerRef);
 	classTag clTag = enemy;
-	void Tick() override;
 	void BeginPlay() override;
+	void UpdateMovement() override;
 	classTag GetClassTag() override;
 	void CollisionEvent(Pawn* target) override;
 

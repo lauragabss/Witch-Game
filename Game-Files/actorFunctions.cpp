@@ -608,10 +608,9 @@ void NPCs::Tick()
 	}
 }
 
-void Enemy::Tick() 
+void Enemy::UpdateMovement()
 {
-	NPCs::Tick();
-	if (GetTargetDistance(playerRef) < 500) 
+	if (GetTargetDistance(playerRef) < 500)
 	{
 		if (MoveToPawn(playerRef))
 		{
@@ -622,10 +621,11 @@ void Enemy::Tick()
 			animation.playerState = idle;
 		}
 	}
-	else 
+	else
 	{
 		animation.playerState = idle;
 	}
+	Pawn::UpdateMovement();
 }
 
 void Pawn::ResetCollisions() 
