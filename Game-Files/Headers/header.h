@@ -165,7 +165,7 @@ public:
 	Game();
 	ScreenSize screenSize;
 	vector<Pawn*> gamePawns = {};
-	vector<Ally>allies;
+	vector<Ally*>allies;
 	int score = 0;
 	void AddPawn(Pawn* pawn);
 	void RemovePawn(int index);
