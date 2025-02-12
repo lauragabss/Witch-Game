@@ -562,7 +562,7 @@ void Enemy::BeginPlay()
 void Ally::BeginPlay() 
 {
 	animation.SetAnimationSources(idle, LoadTexture("Assets/MeowKnight/Meow-Knight_Idle.png"), 6);
-	animation.SetAnimationSources(walk, LoadTexture("Assets/MeowKnight/Meow-Knight_Run.png"), 10);
+	animation.SetAnimationSources(walk, LoadTexture("Assets/MeowKnight/Meow_Knight-Run.png"), 8);
 	Movement initMov = { movement.position, {0,0}, 2 };
 	SetMovement(initMov);
 	clTag = ally;
