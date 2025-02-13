@@ -56,8 +56,8 @@ public:
 	float collisionThreshold = 1.0;
 	bool drawCollisions = false;
 	int index;
-	int life = 100;
-	int maxLife = 100;
+	int life = 5;
+	int maxLife = 5;
 	bool shouldDrawLife = true;
 	virtual classTag GetClassTag();
 
@@ -85,6 +85,7 @@ public:
 	virtual void CollisionEvent(Pawn* target);
 
 protected:
+	virtual void Die();
 	Movement movement;
 
 private:
@@ -113,6 +114,9 @@ public:
 
 	// Setters
 	void AddMana(int val);
+
+protected:
+	void Die() override;
 
 private:
 	void SpawnCat();
@@ -177,10 +181,13 @@ public:
 	ScreenSize screenSize;
 	vector<Pawn*> gamePawns = {};
 	vector<Ally*>allies;
+	Player* playerActor = nullptr;
 	int score = 0;
 	void AddPawn(Pawn* pawn);
 	void RemovePawn(int index);
 	void BeginPlay();
 	void Tick();
 	void Collisions();
+	void InitializeGame(int enemiesAmount);
+	void ClearGame();
 };

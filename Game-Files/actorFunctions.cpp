@@ -50,7 +50,6 @@ Pawn::Pawn() {}
 Pawn::~Pawn()
 {
 	// Pawn destructor
-	printf("\nDESTROY PAWN\n");
 }
 
 Player::Player() 
@@ -228,7 +227,7 @@ void Ally::CollideWithPlayer(Player* player)
 {
 	if(player && player != nullptr)
 	{
-		player->ReceiveBlessing();
+		//player->ReceiveBlessing();
 	}
 }
 
@@ -343,11 +342,16 @@ void Pawn::ReceiveDamage(int damage)
 		life = life - damage;
 		if (life <= 0)
 		{
-			shouldDestroy = true;
+			Die();
 		}
 		damageCountdown = 1;
 		canReceiveDamage = false;
 	}
+}
+
+void Pawn::Die()
+{
+	shouldDestroy = true;
 }
 
 void Pawn::CalculateVulnerability() 
@@ -417,6 +421,12 @@ void Player::AddMana(int val)
 	}
 	
 	mana = tempMana;
+}
+
+void Player::Die()
+{
+	// END GAME
+	gameRef->InitializeGame(10);
 }
 
 classTag NPCs::GetClassTag()
@@ -516,7 +526,7 @@ void Ally::UpdateMovement()
 
 		float distance;
 		distance = GetTargetDistance(playerRef);
-		if (distance < 50)
+		if (distance < 80)
 		{
 			animation.playerState = walk;
 			int velX, velY;

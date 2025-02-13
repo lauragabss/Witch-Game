@@ -15,25 +15,7 @@ int main()
 	InitWindow(gameRef.screenSize.width, gameRef.screenSize.height, "Animation Game");
 	SetTargetFPS(60);
 	const int amountOfEnemies = 10;
-
-	Player* playerActor = new Player();
-	gameRef.AddPawn(playerActor);
-
-	Enemy* tempEnemies[amountOfEnemies];
-	//Starter enemies
-	for (int i=0; i < amountOfEnemies; i++)
-	{
-		// Location
-		tempEnemies[i] = new Enemy(MakeRandomLocation(gameRef.screenSize, 100), playerActor);
-
-		gameRef.AddPawn(tempEnemies[i]);
-	}
-
-	Potion* potion = new Potion(MakeRandomLocation(gameRef.screenSize, 100));
-	gameRef.AddPawn(potion);
-
-	//Begin play
-	gameRef.BeginPlay();
+	gameRef.InitializeGame(amountOfEnemies);
 
 	//Game loop
 	while(!WindowShouldClose())
@@ -51,9 +33,9 @@ int main()
 		gameRef.Collisions();
 
 		//Draw UI
-		DrawText(TextFormat("Mana %i / %i", playerActor->GetMana(), playerActor->GetMaxMana()), 10, 30, 20, BLUE);
+		DrawText(TextFormat("Mana %i / %i", gameRef.playerActor->GetMana(), gameRef.playerActor->GetMaxMana()), 10, 30, 20, BLUE);
 		DrawText(TextFormat("SCORE %i", gameRef.score), 10, 0, 20, WHITE);
-		DrawText(TextFormat("LIFE %i / %i", playerActor->life, playerActor->maxLife), 10, 60, 20, RED);
+		DrawText(TextFormat("LIFE %i / %i", gameRef.playerActor->life, gameRef.playerActor->maxLife), 10, 60, 20, RED);
 
 		//end
 		EndDrawing();

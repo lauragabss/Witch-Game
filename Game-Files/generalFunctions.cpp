@@ -1,5 +1,6 @@
 #include "Headers/generalFunctions.h"
 #include "Headers/header.h"
+#include "Headers/itemsHeader.h"
 
 using namespace std;
 
@@ -74,6 +75,7 @@ void Game::RemovePawn(int index)
 {
 	gamePawns[index]->isActive = false;
 	gamePawns[index]->shouldDestroy = false;
+	delete gamePawns[index];
 	gamePawns[index] = nullptr;
 }
 
@@ -82,7 +84,10 @@ void Game::BeginPlay()
 	int pawnsAmount = gamePawns.size();
 	for (int i = 0; i < pawnsAmount; i++)
 	{
-		gamePawns[i]->BeginPlay();
+		if (gamePawns[i] != nullptr)
+		{
+			gamePawns[i]->BeginPlay();
+		}
 	}
 }
 
@@ -131,3 +136,49 @@ void Game::Collisions()
 	}
 }
 
+void Game::InitializeGame(int enemiesAmount)
+{
+	// Delete all from game
+	ClearGame();
+
+
+	// Spawn character
+	Player* player = new Player();
+	playerActor = player;
+	playerActor->gameRef = this;
+	AddPawn(player);
+
+	std::vector<Enemy*> tempEnemies(enemiesAmount);
+	// Starter enemies
+	for (int i = 0; i < enemiesAmount; i++)
+	{
+		// Location
+		tempEnemies[i] = new Enemy(MakeRandomLocation(screenSize, 100), playerActor);
+		AddPawn(tempEnemies[i]);
+	}
+
+	// Spawn initial potion
+	Potion* potion = new Potion(MakeRandomLocation(screenSize, 100));
+	AddPawn(potion);
+
+	//Begin play
+	BeginPlay();
+}
+
+void Game::ClearGame()
+{
+	for (Pawn* pawn : gamePawns)
+	{
+		if (pawn != nullptr)
+		{
+			pawn->shouldDestroy = true;
+		}
+	}
+
+	/*
+	for (Ally* ally : allies)
+	{
+		ally->shouldDestroy = true;
+	}
+	*/
+}

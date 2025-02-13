@@ -33,15 +33,15 @@
     <ClCompile Include="generalFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="itemFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animationHeader.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="header.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\header.h">
@@ -57,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\movementHeader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\itemsHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
