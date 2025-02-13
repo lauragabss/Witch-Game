@@ -115,6 +115,11 @@ void Game::Tick()
 			}
 		}
 	}
+
+	if (winGame)
+	{
+		DrawText(TextFormat("                   CONGRATULATIONS!\n YOU ARE NOW GRADUATED IN CAT WITCHCRAFT"), 100, (screenSize.height / 2) - 40, 40, WHITE);
+	}
 }
 
 void Game::Collisions()
@@ -141,6 +146,7 @@ void Game::InitializeGame(int enemiesAmount)
 	// Delete all from game
 	ClearGame();
 
+	winGame = false;
 
 	// Spawn character
 	Player* player = new Player();
@@ -157,8 +163,10 @@ void Game::InitializeGame(int enemiesAmount)
 		AddPawn(tempEnemies[i]);
 	}
 
+	allies = {};
+
 	// Spawn initial potion
-	Potion* potion = new Potion(MakeRandomLocation(screenSize, 100));
+	ManaPotion* potion = new ManaPotion(MakeRandomLocation(screenSize, 100));
 	AddPawn(potion);
 
 	//Begin play
@@ -181,4 +189,24 @@ void Game::ClearGame()
 		ally->shouldDestroy = true;
 	}
 	*/
+}
+
+void Game::SpawnEnemy()
+{
+	bool gotValidLocation = false;
+	Vector2 playerPosition = playerActor->GetMovement().position;
+	Vector2 location;
+	while(!gotValidLocation)
+	{
+		location = MakeRandomLocation(screenSize, 100);
+
+		// Check if it's too close from player
+		gotValidLocation = !(location.x >= playerPosition.x - 500 && location.x <= playerPosition.x + 500 &&
+			location.y >= playerPosition.y - 500 && location.y <= playerPosition.y + 500);
+
+	}
+	printf("\nplayer location: (%f/%f)     random location: (%f/%f) ", playerPosition.x, playerPosition.y, location.x, location.y);
+
+	Enemy* enemy = new Enemy(MakeRandomLocation(screenSize, 100), playerActor);
+	AddPawn(enemy);
 }

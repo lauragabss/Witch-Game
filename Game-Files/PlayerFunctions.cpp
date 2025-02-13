@@ -19,5 +19,9 @@ void Player::SpawnCat()
 		gameRef->allies.push_back(ally);
 		int size = gameRef->allies.size();
 		gameRef->AddPawn(gameRef->allies[size - 1]);
+		if (size >= gameRef->maxScore)
+		{
+			gameRef->winGame = true;
+		}
 	}
 }

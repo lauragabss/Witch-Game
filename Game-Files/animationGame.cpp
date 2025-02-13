@@ -34,7 +34,7 @@ int main()
 
 		//Draw UI
 		DrawText(TextFormat("Mana %i / %i", gameRef.playerActor->GetMana(), gameRef.playerActor->GetMaxMana()), 10, 30, 20, BLUE);
-		DrawText(TextFormat("SCORE %i", gameRef.score), 10, 0, 20, WHITE);
+		DrawText(TextFormat("CATS %i / %i", gameRef.allies.size(), gameRef.maxScore), 10, 0, 20, WHITE);
 		DrawText(TextFormat("LIFE %i / %i", gameRef.playerActor->life, gameRef.playerActor->maxLife), 10, 60, 20, RED);
 
 		//end

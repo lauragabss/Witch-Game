@@ -368,15 +368,15 @@ void Pawn::CalculateVulnerability()
 	}
 }
 
-void Pawn::ReceiveBlessing() 
+void Pawn::ReceiveBlessing(int blessingAmount) 
 {
-	if (animation.imagesizeMultiplier < animation.maxImageSizeMultiplier) 
-	{ 
+	//if (animation.imagesizeMultiplier < animation.maxImageSizeMultiplier) 
+	//{ 
 		// Growth blessing
 		//animation.imagesizeMultiplier = animation.imagesizeMultiplier * 2;
 
 		// Life blessing
-		int tempLife = life + 5;
+		int tempLife = life + blessingAmount;
 		if (tempLife > maxLife)
 		{
 			life = maxLife;
@@ -385,7 +385,7 @@ void Pawn::ReceiveBlessing()
 		{
 			life = tempLife;
 		}
-	}
+	//}
 }
 
 classTag Pawn::GetClassTag()

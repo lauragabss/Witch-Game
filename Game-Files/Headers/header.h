@@ -14,7 +14,7 @@ enum classTag { pawn = 1, player = 2, NPC = 3, ally= 4, enemy= 5};
 struct ability 
 {
 	float skillCooldown = 3;
-	float currentCooldownTime = 3;
+	float currentCooldownTime = 1;
 	bool canUse = true;
 	int abilityCost = 6;
 	int* manaPool = nullptr;
@@ -78,7 +78,7 @@ public:
 	//*** event ***
 	void Tick() override;
 	void ReceiveDamage(int damage);
-	void ReceiveBlessing();
+	void ReceiveBlessing(int blessingAmount);
 	void CalculateVulnerability();
 
 	// Called when collision happens
@@ -183,6 +183,8 @@ public:
 	vector<Ally*>allies;
 	Player* playerActor = nullptr;
 	int score = 0;
+	int maxScore = 10;
+	bool winGame = false;
 	void AddPawn(Pawn* pawn);
 	void RemovePawn(int index);
 	void BeginPlay();
@@ -190,4 +192,5 @@ public:
 	void Collisions();
 	void InitializeGame(int enemiesAmount);
 	void ClearGame();
+	void SpawnEnemy();
 };
