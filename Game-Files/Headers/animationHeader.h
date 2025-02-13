@@ -40,8 +40,8 @@ class Animation
 		Texture2D CalculateFrame();
 		coordinates GetImageSize();
 
+		Color animationTint = WHITE;
 	protected:
-
 	private:
 		coordinates imagePosition;
 		coordinates imageSize;

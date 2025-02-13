@@ -602,6 +602,8 @@ void Ally::BeginPlay()
 	Movement initMov = { movement.position, {0,0}, 2 };
 	SetMovement(initMov);
 	clTag = ally;
+
+	animation.animationTint = ORANGE;
 }
 
 // ----------------Tick---------------

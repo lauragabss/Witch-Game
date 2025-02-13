@@ -82,7 +82,7 @@ void Animation::ShowAnimation(Movement movement)
 		{ movement.position.x, movement.position.y, imageSize.x * imagesizeMultiplier, imageSize.y * imagesizeMultiplier },
 		Vector2{0,0},
 		0,
-		WHITE
+		animationTint
 	);
 }
 
