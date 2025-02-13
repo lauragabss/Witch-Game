@@ -67,7 +67,6 @@ Game::Game() {}
 //Activate events based on collision
 void Pawn::CollisionEvent(Pawn* target) 
 {
-
 }
 
 void Enemy::CollisionEvent(Pawn* target)
@@ -80,6 +79,8 @@ void Enemy::CollisionEvent(Pawn* target)
 
 void Player::CollisionEvent(Pawn* target)
 {
+	Pawn::CollisionEvent(target);
+
 	if (!target || target==nullptr)
 	{
 		return;
@@ -151,7 +152,7 @@ void Pawn::CheckCollisionWithScreen()
 }
 
 //Verify if collision boundaries collided with something and returns true or false
-bool Pawn::CheckCollision(Pawn *target) 
+bool Pawn::CheckCollision(Pawn* target) 
 {
 
 	//Check if collided with player
@@ -184,8 +185,10 @@ bool Pawn::CheckCollision(Pawn *target)
 			Player* tempPlayer = dynamic_cast<Player*>(target);
 			if (!(tempPlayer == nullptr))
 			{
-				CollideWithPlayer(target);
+				CollideWithPlayer(tempPlayer);
 			}
+
+			CollisionEvent(target);
 			return true;
 		}
 		else
@@ -211,23 +214,21 @@ void Ally::CheckOverlap(Pawn* overlappedPawn, int pawnIndex)
 	}
 }
 
-void Pawn::CollideWithPlayer(Pawn* player) 
+void Pawn::CollideWithPlayer(Player* player)
 {
 
 }
 
-void Enemy::CollideWithPlayer(Pawn* player) 
+void Enemy::CollideWithPlayer(Player* player) 
 {
 	//dynamic_cast<Player*>(player)->ReceiveDamage(5);
 }
 
-void Ally::CollideWithPlayer(Pawn* player) 
+void Ally::CollideWithPlayer(Player* player)
 {
-	//isRunningFromPlayer = true;
-	Player* player_ = dynamic_cast<Player*>(player);
-	if(player_ && player_ != nullptr)
+	if(player && player != nullptr)
 	{
-		player_->ReceiveBlessing();
+		player->ReceiveBlessing();
 	}
 }
 
@@ -247,7 +248,7 @@ void Pawn::UpdateMovement()
 }
 
 //Add a velocity to a movement object (receives a target and an intended velocity)
-void Pawn :: AddVelocity(float velX, float velY)
+void Pawn::AddVelocity(float velX, float velY)
 {
 	//Check facing direction
 	if (velX > 0) 
@@ -391,6 +392,31 @@ classTag Pawn::GetClassTag()
 classTag Player::GetClassTag()
 {
 	return player;
+}
+
+int Player::GetMana()
+{
+	return mana;
+}
+
+int Player::GetMaxMana()
+{
+	return maxMana;
+}
+
+void Player::AddMana(int val)
+{
+	int tempMana = mana + val;
+	if (tempMana > maxMana)
+	{
+		tempMana = maxMana;
+	}
+	else if (tempMana < 0)
+	{
+		tempMana = 0;
+	}
+	
+	mana = tempMana;
 }
 
 classTag NPCs::GetClassTag()

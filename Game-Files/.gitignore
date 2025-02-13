@@ -6,6 +6,7 @@
 *.dll
 *.exe
 *.out
+*.aseprite
 
 # Ignore Raylib-specific build directories
 build/

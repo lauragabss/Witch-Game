@@ -29,7 +29,7 @@ struct ScreenSize
 bool ActivateAbility(ability* hab);
 
 class Game;
-
+class Player;
 
 class Actor
 {
@@ -58,28 +58,31 @@ public:
 	int index;
 	int life = 100;
 	int maxLife = 100;
+	bool shouldDrawLife = true;
 	virtual classTag GetClassTag();
-	virtual void CollisionEvent(Pawn* target);
 
-	//movement
+	//*** movement ***
 	virtual void UpdateMovement();
-	virtual void CollideWithPlayer(Pawn *player);
+	virtual void CollideWithPlayer(Player* player);
 	void SetMovement(Movement mov);
 	Movement GetMovement();
 	void ResetCollisions();
 	void AddVelocity(float velX, float velY);
 
-	//collision
+	//*** collision ***
 	virtual void Collision(Rectangle rec, Pawn* pawn);
 	virtual bool CheckCollision(Pawn *playerRect);
 	virtual void CheckOverlap(Pawn* overlappedPawn);
 	void CheckCollisionWithScreen();
 
-	//event
+	//*** event ***
 	void Tick() override;
 	void ReceiveDamage(int damage);
 	void ReceiveBlessing();
 	void CalculateVulnerability();
+
+	// Called when collision happens
+	virtual void CollisionEvent(Pawn* target);
 
 protected:
 	Movement movement;
@@ -96,9 +99,6 @@ class Player : public Pawn
 public:
 	Player();
 	classTag clTag = player;
-	int mana = 10;
-	int maxMana = 10;
-	int magicCost = 6;
 	void Inputs();
 	void UpdateMovement() override;
 	void Collision(Rectangle rec, Pawn* pawn) override;
@@ -107,9 +107,20 @@ public:
 	void CollisionEvent(Pawn* target) override;
 	classTag GetClassTag() override;
 
+	// Getters
+	int GetMana();
+	int GetMaxMana();
+
+	// Setters
+	void AddMana(int val);
+
 private:
 	void SpawnCat();
 	ability spawnCatAbility;
+
+	int mana = 10;
+	int maxMana = 10;
+	int magicCost = 6;
 };
 
 //NPCs are non playable characters
@@ -140,7 +151,7 @@ public:
 	void CollisionEvent(Pawn* target) override;
 
 private:
-	void CollideWithPlayer(Pawn* player) override;
+	void CollideWithPlayer(Player* player) override;
 };
 
 //Allies are characters to help the player
@@ -154,7 +165,7 @@ public:
 	classTag GetClassTag() override;
 
 private:
-	void CollideWithPlayer(Pawn* player) override;
+	void CollideWithPlayer(Player* player) override;
 	bool isRunningFromPlayer = false;
 };
 

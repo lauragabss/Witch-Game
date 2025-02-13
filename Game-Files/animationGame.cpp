@@ -1,5 +1,6 @@
 #include "Headers/header.h"
 #include "Headers/animationHeader.h"
+#include "Headers/itemsHeader.h"
 #include <iostream>
 #include "Headers/generalFunctions.h"
 
@@ -13,7 +14,7 @@ int main()
 	//window config
 	InitWindow(gameRef.screenSize.width, gameRef.screenSize.height, "Animation Game");
 	SetTargetFPS(60);
-	const int amountOfEnemies = 5;
+	const int amountOfEnemies = 10;
 
 	Player* playerActor = new Player();
 	gameRef.AddPawn(playerActor);
@@ -22,14 +23,14 @@ int main()
 	//Starter enemies
 	for (int i=0; i < amountOfEnemies; i++)
 	{
-		//Location
-		Vector2 randomLocation;
-		randomLocation.x = RandomNumInRange(20, gameRef.screenSize.width - 20);
-		randomLocation.y = RandomNumInRange(20, gameRef.screenSize.height - 20);
-		tempEnemies[i] = new Enemy(randomLocation, playerActor);
+		// Location
+		tempEnemies[i] = new Enemy(MakeRandomLocation(gameRef.screenSize, 100), playerActor);
 
 		gameRef.AddPawn(tempEnemies[i]);
 	}
+
+	Potion* potion = new Potion(MakeRandomLocation(gameRef.screenSize, 100));
+	gameRef.AddPawn(potion);
 
 	//Begin play
 	gameRef.BeginPlay();
@@ -50,7 +51,7 @@ int main()
 		gameRef.Collisions();
 
 		//Draw UI
-		DrawText(TextFormat("Mana %i / %i", playerActor->mana, playerActor->maxMana), 10, 30, 20, BLUE);
+		DrawText(TextFormat("Mana %i / %i", playerActor->GetMana(), playerActor->GetMaxMana()), 10, 30, 20, BLUE);
 		DrawText(TextFormat("SCORE %i", gameRef.score), 10, 0, 20, WHITE);
 		DrawText(TextFormat("LIFE %i / %i", playerActor->life, playerActor->maxLife), 10, 60, 20, RED);
 

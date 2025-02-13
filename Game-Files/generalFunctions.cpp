@@ -17,6 +17,31 @@ int RandomNumInRange(int min, int max)
 	return(min + (rand() % max));
 }
 
+int Clamp(int value, int min, int max)
+{
+	if(value < min)
+	{
+		return min;
+	}
+	else if (value > max)
+	{
+		return max;
+	}
+	return value;
+}
+
+
+Vector2 MakeRandomLocation(ScreenSize screenSize, int screenOffset)
+{
+	Vector2 randomLocation;
+	int maxWidth = screenSize.width - screenOffset;
+	int maxHeight = screenSize.height - screenOffset;
+	randomLocation.x = Clamp(RandomNumInRange(screenOffset, maxWidth), screenOffset, maxWidth);
+	randomLocation.y = Clamp(RandomNumInRange(screenOffset, maxHeight), screenOffset, maxHeight);
+
+	return randomLocation;
+}
+
 
 void Game::AddPawn(Pawn* pawn)
 {
@@ -77,7 +102,10 @@ void Game::Tick()
 				if(gamePawns[i]->isActive)
 				{
 					gamePawns[i]->Tick();
-					DrawLife(gamePawns[i]->life, gamePawns[i]->maxLife, gamePawns[i]->rec.x, gamePawns[i]->rec.y - 10, 20);
+					if (gamePawns[i]->shouldDrawLife)
+					{
+						DrawLife(gamePawns[i]->life, gamePawns[i]->maxLife, gamePawns[i]->rec.x, gamePawns[i]->rec.y - 10, 20);
+					}
 				}
 			}
 		}
